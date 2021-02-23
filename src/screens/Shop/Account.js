@@ -15,7 +15,9 @@ class Account extends Component{
     return(
         <ScrollView style={{backgroundColor:'white'}}>
            <View style={styles.container}>
-                <TouchableOpacity style={styles.flexContainer}>
+                <TouchableOpacity style={styles.flexContainer} 
+                 onPress={this.props.navigation.navigate('COVID-19 Safety Center')}
+                >
                   <AntDesign name="Safety" size={24} color="black" />
                     <Text>{'  '}</Text>
                     <Text style={styles.text}>COVID-19 Safety Center</Text>

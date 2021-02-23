@@ -1,10 +1,10 @@
 import React from 'react';
 import {View,Text,StyleSheet} from 'react-native';
 
-const AboutUs=()=>{
+const Rewards=()=>{
     return(
      <View style={styles.container}>
-         <Text>AboutUs Screen</Text>
+         <Text>Rewards Screen</Text>
      </View>
     )
 }
@@ -18,4 +18,4 @@ const styles=StyleSheet.create({
    
 })
 
-export default AboutUs;
+export default Rewards;

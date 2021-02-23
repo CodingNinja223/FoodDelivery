@@ -13,9 +13,36 @@ import Search from './src/screens/Shop/Search';
 import Orders from './src/screens/Shop/Orders';
 import Account from './src/screens/Shop/Account'
 import {auth} from './init/firebase';
+import Covid from './src/screens/Shop/Covid';
+import Favourites from './src/screens/Shop/Favorites';
+import Rewards from './src/screens/Shop/Rewards'
+import Payment from './src/screens/Shop/Payment';
+import Help from './src/screens/Shop/Help'
+import Promotions from './src/screens/Shop/Promotions'
+import DeliverWithUs from './src/screens/Shop/DeliverWithUs';
+import Settings from './src/screens/Shop/Settings';
 import { Ionicons,FontAwesome } from '@expo/vector-icons';
+import AboutUs from './src/screens/Shop/AboutUs';
 
 const Stack = createStackNavigator();
+
+
+const AccountNavigation=()=>{
+   return(
+     <Stack.Navigator>
+        <Stack.Screen name="COVID-19 Safety Center" component={Covid}/>
+        <Stack.Screen name="Your Favourites" component={Favourites}/>
+        <Stack.Screen name="Restuarant Rewards" component={Rewards}/>
+        <Stack.Screen name="Payment" component={Payment}/>
+        <Stack.Screen name="Help" component={Help}/>
+        <Stack.Screen name="Promotions" component={Promotions}/>
+        <Stack.Screen name="Deliver With Us" component={DeliverWithUs}/>
+        <Stack.Screen name="Settings" component={Settings}/>
+        <Stack.Screen name="About" component={AboutUs}/>
+     </Stack.Navigator>
+   )
+}
+
 
 const AuthNavigation=()=>{
   return(
@@ -29,9 +56,6 @@ const AuthNavigation=()=>{
 
 const Tab = createBottomTabNavigator();
 
-const TabNavigation=()=>{
-    return
-}
 
 class App extends Component{
   constructor(){
