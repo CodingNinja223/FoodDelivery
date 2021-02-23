@@ -29,9 +29,10 @@ const Stack = createStackNavigator();
 
 const AccountNavigation=()=>{
    return(
-     <Stack.Navigator>
-        <Stack.Screen name="COVID-19 Safety Center" component={Covid}/>
-        <Stack.Screen name="Your Favourites" component={Favourites}/>
+     <Stack.Navigator initialRouteName="Account">
+        <Stack.Screen name="Account" component={Account}/>
+        <Stack.Screen name="COVID-19" component={Covid}/>
+        <Stack.Screen name="Favourites" component={Favourites}/>
         <Stack.Screen name="Restuarant Rewards" component={Rewards}/>
         <Stack.Screen name="Payment" component={Payment}/>
         <Stack.Screen name="Help" component={Help}/>
@@ -116,7 +117,7 @@ class App extends Component{
                    <Tab.Screen name="Home" component={Home} user={user}/>
                    <Tab.Screen name="Search" component={Search}/>
                   <Tab.Screen name="Orders" component={Orders}/>
-                  <Tab.Screen name="Account" component={Account}/>
+                  <Tab.Screen name="Account" component={AccountNavigation}/>
                   
               </Tab.Navigator>
             )
