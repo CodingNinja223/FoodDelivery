@@ -16,7 +16,7 @@ class Account extends Component{
                 >
                   <AntDesign name="Safety" size={24} color="black" />
                     <Text>{'  '}</Text>
-                    <Text style={styles.text}>COVID-19 Safety Center</Text>
+                    <Text style={styles.text}>COVID-19 Safety Center{this.props.name}</Text>
                 </TouchableOpacity>
                 <TouchableOpacity style={styles.flexContainer} onPress={()=>{
                     this.props.navigation.navigate('Favourites')

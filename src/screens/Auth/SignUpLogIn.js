@@ -1,11 +1,11 @@
 import React from 'react';
-import {View,Text,TouchableOpacity,StyleSheet} from 'react-native'
+import {View,Text,TouchableOpacity,StyleSheet,Image} from 'react-native'
 
 const SignUpLogIn =({navigation})=>{
 
     return(
       <View style={styles.container}>
-          <Text style={styles.HeadingText}>Welcome to Food On Wheels</Text>
+          <Image source={require('../../img/Logo.png')}/>
            <View style={styles.contain}>
                 <View style={styles.containerPad}>
                     <TouchableOpacity style={styles.buttonLogIn} 
@@ -24,6 +24,8 @@ const SignUpLogIn =({navigation})=>{
 
 const styles=StyleSheet.create({
     container:{
+        flex:1,
+        backgroundColor:'white',
         justifyContent:'center',
         alignItems:'center'
     },
@@ -57,7 +59,7 @@ const styles=StyleSheet.create({
         marginVertical:20,
     },
     contain:{
-        marginTop:150
+        marginTop:80
     }
 })
 

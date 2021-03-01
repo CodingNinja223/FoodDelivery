@@ -1,5 +1,5 @@
 import firebase from 'firebase'
-
+import 'firebase/firebase-firestore';
 var firebaseConfig = {
     apiKey: "AIzaSyClWeRxclp0vdP0JpI4aJ21YRWPbN_9ST8",
     authDomain: "food-on-wheels-6c8dd.firebaseapp.com",
@@ -14,4 +14,5 @@ var firebaseConfig = {
   }
   
 export const auth=firebase.auth();
-const provider = new firebase.auth.GoogleAuthProvider();
+export const provider = new firebase.auth.GoogleAuthProvider();
+export const db=firebase.firestore();

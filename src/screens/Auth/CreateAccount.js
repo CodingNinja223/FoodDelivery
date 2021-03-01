@@ -1,6 +1,6 @@
 import React,{Component} from 'react';
 import {View,Text,TouchableOpacity,StyleSheet,TextInput} from 'react-native'
-import {auth} from '../../../init/firebase'
+import {auth,db} from '../../../init/firebase'
 class CreateAccount extends Component{
     constructor(){
         super();
@@ -13,25 +13,23 @@ class CreateAccount extends Component{
     }
 
 
-   SignUp=()=>{
+   SignUp=async()=>{
     const {name,number,email,password}=this.state;
-    auth.createUserWithEmailAndPassword(email, password).then((user) => {
-    // Signed in 
-        user.updateProfile({
-        displayName: name,
+    await auth.createUserWithEmailAndPassword(email, password);
+    const currentUser=auth.currentUser;
+    currentUser.updateProfile({
+        displayName:name,
         phoneNumber:number
-        }).then(function() {
-        // Update successful.
-        }).catch(function(error) {
-        // An error happened.
-        });
-    // ...
-  })
-  .catch((error) => {
-    var errorCode = error.code;
-    var errorMessage = error.message;
-    // ..
-  });
+    })
+    db.collection("user")
+    .doc(currentUser.uid)
+    .set({
+        email:currentUser.email,
+        name:name,
+        number:number,
+        orders:''
+    })
+  console.log("user")
  }
 
     render(){
@@ -40,16 +38,16 @@ class CreateAccount extends Component{
             <View style={styles.container}>
                 <Text style={styles.headingText}>Create Account</Text>
                 <View style={styles.contain}>
-                    <TextInput placeholder="full Name"  value={name} onChangeText={(e)=>this.setState({name:e})}/>
+                    <TextInput placeholder="Name" style={styles.LoginText}  value={name} onChangeText={(e)=>this.setState({name:e})}/>
                 </View>
                 <View style={styles.contain}>
-                    <TextInput placeholder="Phone Number" keyboardType="numeric" value={number} onChangeText={(e)=>this.setState({number:e})}/>
+                    <TextInput placeholder="Phone Number" style={styles.LoginText} keyboardType="numeric" value={number} onChangeText={(e)=>this.setState({number:e})}/>
                 </View>
                 <View style={styles.contain}>
-                    <TextInput placeholder="E-mail" keyboardType="email-address" value={email} onChangeText={(e)=>this.setState({email:e})}/>
+                    <TextInput placeholder="E-mail" style={styles.LoginText} keyboardType="email-address" value={email} onChangeText={(e)=>this.setState({email:e})}/>
                 </View>
                 <View style={styles.contain}>
-                    <TextInput placeholder="Password" secureTextEntry={true} value={password} onChangeText={(e)=>this.setState({password:e})}/>
+                    <TextInput placeholder="Password" style={styles.LoginText} secureTextEntry={true} value={password} onChangeText={(e)=>this.setState({password:e})}/>
                 </View>
                 <View style={styles.contain}>
                     <TouchableOpacity style={styles.buttonSignUp} onPress={this.SignUp}>
@@ -67,6 +65,14 @@ class CreateAccount extends Component{
          justifyContent:'center',
          alignItems:'center',
          backgroundColor:'white'
+     },
+     LoginText:{
+        backgroundColor:"white",
+        borderColor:"#d3d5d4",
+        borderWidth:1,
+        width:280,
+        padding:10,
+        borderRadius:5
      },
      buttonSignUp:{
         borderRadius:20,

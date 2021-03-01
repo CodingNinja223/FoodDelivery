@@ -1,21 +1,13 @@
 import React from 'react';
 import {View,Text,StyleSheet} from 'react-native';
+import Tab from './TabDeals';
 
 const Rewards=()=>{
     return(
-     <View style={styles.container}>
-         <Text>Rewards Screen</Text>
-     </View>
+     <Tab/>
     )
 }
 
-const styles=StyleSheet.create({
-    container:{
-        flex:1,
-        justifyContent:'center',
-        alignItems:'center'
-    }
-   
-})
+
 
 export default Rewards;
