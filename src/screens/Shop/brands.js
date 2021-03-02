@@ -67,6 +67,7 @@ const styles=StyleSheet.create({
     },
     heading:{
         fontSize:20,
+        fontWeight:"bold",
         margin:10
     },
     pain:{

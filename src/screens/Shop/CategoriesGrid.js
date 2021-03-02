@@ -94,7 +94,7 @@ render(){
          keyExtractor={item=>item.id}
          data={this.state.data}
          renderItem={({item})=>(
-             <TouchableOpacity style={styles.flexcontainer} onPress={()=>this.props.navigation.navigate(`Account`,{screen:`${item.route}`})}>
+             <TouchableOpacity style={styles.flexcontainer} onPress={()=>this.props.navigation.navigate(`${item.route}`)}>
              <ImageBackground source={`${item.image}`} style={styles.image}>
                   <Text style={styles.textColor}>{item.text}</Text>
              </ImageBackground>

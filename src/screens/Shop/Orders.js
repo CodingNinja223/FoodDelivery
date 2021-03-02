@@ -5,7 +5,7 @@ import {View,Text,StyleSheet} from 'react-native';
 const Orders=()=>{
     return(
         <View style={styles.container}>
-            <Text>This is the account screen</Text>
+            <Text>This is the orders screen</Text>
         </View>
     )
 }

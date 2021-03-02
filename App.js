@@ -32,7 +32,13 @@ import Pasta from './src/screens/Shop/Pasta';
 import SeaFood from './src/screens/Shop/SeaFood';
 import FastFood from './src/screens/Shop/FastFood';
 import CategoriesSlider from './src/screens/Shop/CategoiresSlider'
+import Fruits from './src/screens/Shop/Fruits';
+import Sweets from './src/screens/Shop/Sweets';
+import Coffee from './src/screens/Shop/Coffee';
+import Vegetarian from './src/screens/Shop/Vegetarian';
 //End of Categories
+import Adress from './src/screens/Shop/Adress';
+import PickAdress from './src/screens/Shop/PickAdress';
 
 const Stack = createStackNavigator();
 
@@ -71,7 +77,17 @@ const AccountNavigation=({user,navigation})=>{
         <Stack.Screen name="Edit Account">
           {({navigation})=><EditAccount navigation={navigation}/>}
         </Stack.Screen>
-        <Stack.Screen name="Alcohol">
+     </Stack.Navigator>
+   )
+}
+
+const SearchNavigation=()=>{
+  return(
+    <Stack.Navigator initialRouteName="Search" headerMode={false}>
+       <Stack.Screen name="Search">
+         {({navigation})=><Search navigation={navigation}/>}
+       </Stack.Screen>
+       <Stack.Screen name="Alcohol">
           {({navigation})=><Alcohol navigation={navigation}/>}
         </Stack.Screen>
         <Stack.Screen name="Breakfast">
@@ -98,10 +114,61 @@ const AccountNavigation=({user,navigation})=>{
         <Stack.Screen name="Categories">
           {({navigation})=><CategoriesSlider navigation={navigation}/>}
         </Stack.Screen>
-     </Stack.Navigator>
-   )
+        <Stack.Screen name="Fruits">
+            {({navigation})=><Fruits navigation={navigation}/>}
+        </Stack.Screen>
+        <Stack.Screen name="Sweets">
+            {({navigation})=><Sweets navigation={navigation}/>}
+        </Stack.Screen>
+        <Stack.Screen name="Coffee">
+            {({navigation})=><Coffee navigation={navigation}/>}
+        </Stack.Screen>
+        <Stack.Screen name="Vegetarian">
+            {({navigation})=><Vegetarian navigation={navigation}/>}
+        </Stack.Screen>
+    </Stack.Navigator>
+  )
 }
 
+const HomeNavigator=()=>{
+  return(
+    <Stack.Navigator headerMode={false}>
+       <Stack.Screen name="Home">
+           {({navigation})=><Home  navigation={navigation}/>}
+       </Stack.Screen>
+       <Stack.Screen name="Alcohol">
+          {({navigation})=><Alcohol navigation={navigation}/>}
+        </Stack.Screen>
+        <Stack.Screen name="Breakfast">
+          {({navigation})=><Breakfast navigation={navigation}/>}
+        </Stack.Screen>
+        <Stack.Screen name="Burgers">
+          {({navigation})=><Burgers navigation={navigation}/>}
+        </Stack.Screen>
+        <Stack.Screen name="Chicken">
+          {({navigation})=><Chicken navigation={navigation}/>}
+        </Stack.Screen>
+        <Stack.Screen name="Fast Food">
+          {({navigation})=><FastFood navigation={navigation}/>}
+        </Stack.Screen>
+        <Stack.Screen name="Indian Food">
+          {({navigation})=><Indian navigation={navigation}/>}
+        </Stack.Screen>
+        <Stack.Screen name="Pasta">
+          {({navigation})=><Pasta navigation={navigation}/>}
+        </Stack.Screen>
+        <Stack.Screen name="Sea Food">
+          {({navigation})=><SeaFood navigation={navigation}/>}
+        </Stack.Screen>
+        <Stack.Screen name="Adress">
+          {({navigation})=><Adress navigation={navigation}/>}
+        </Stack.Screen>
+        <Stack.Screen name="Pick Adress">
+          {({navigation})=><PickAdress navigation={navigation}/>}
+        </Stack.Screen>
+    </Stack.Navigator>
+  )
+}
 
 const AuthNavigation=({navigation})=>{
   return(
@@ -188,10 +255,10 @@ class App extends Component{
             }}
          >
            <Tab.Screen name="Home" >
-              {({navigation})=>  <Home navigation={navigation}/>}
+              {({navigation})=>  <HomeNavigator navigation={navigation}/>}
              </Tab.Screen>
-           <Tab.Screen name="Search" >
-                {({navigation})=><Search navigation={navigation}/>}
+           <Tab.Screen name="Search">
+                {({navigation})=><SearchNavigation navigation={navigation}/>}
             </Tab.Screen>
           <Tab.Screen name="Orders" >
               {({navigation})=><Orders/>}

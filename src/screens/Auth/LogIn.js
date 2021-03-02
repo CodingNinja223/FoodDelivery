@@ -31,28 +31,46 @@ Login=()=>{
 
 
 FacebookLogIn=async()=>{
-  try {
-    await Facebook.initializeAsync({
-      appId: '1992662697543495',
-    });
-    const {
-      type,
-      token,
-      expirationDate,
-      permissions,
-      declinedPermissions,
-    } = await Facebook.logInWithReadPermissionsAsync({
-      permissions: ['public_profile'],
-    });
-    if (type === 'success') {
-      // Get the user's name using Facebook's Graph API
-      const response = await fetch(`https://graph.facebook.com/me?access_token=${token}`);
-      Alert.alert('Logged in!', `Hi ${(await response.json()).name}!`);
-    } else {
-      // type === 'cancel'
-    }
-  } catch ({ message }) {
-    alert(`Facebook Login Error: ${message}`);
+  // try {
+  //   await Facebook.initializeAsync({
+  //     appId: '1992662697543495',
+  //   });
+  //   const {
+  //     type,
+  //     token,
+  //     expirationDate,
+  //     permissions,
+  //     declinedPermissions,
+  //   } = await Facebook.logInWithReadPermissionsAsync({
+  //     permissions: ['public_profile'],
+  //   });
+  //   if (type === 'success') {
+  //     // Get the user's name using Facebook's Graph API
+  //     const response = await fetch(`https://graph.facebook.com/me?access_token=${token}`);
+  //     Alert.alert('Logged in!', `Hi ${(await response.json()).name}!`);
+  //   } else {
+  //     // type === 'cancel'
+  //   }
+  // } catch ({ message }) {
+  //   alert(`Facebook Login Error: ${message}`);
+  // }
+
+  await Facebook.initializeAsync({appId:'1992662697543495'});
+
+  const { type, token } = await Facebook.logInWithReadPermissionsAsync({
+    permissions: ['public_profile'],
+  });
+
+  if (type === 'success') {
+    // Build Firebase credential with the Facebook access token.
+    const credential = auth.FacebookAuthProvider.credential(token);
+      console.log('success')
+    // Sign in with credential from the Facebook user.
+       auth
+      .signInWithCredential(credential)
+      .catch(error => {
+        // Handle Errors here.
+      });
   }
 }
 

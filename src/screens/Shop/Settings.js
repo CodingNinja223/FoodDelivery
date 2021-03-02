@@ -1,10 +1,15 @@
 import React,{Component} from 'react';
 import {View,Text,StyleSheet,TouchableOpacity} from 'react-native'
 import { Divider,Avatar  } from 'react-native-elements';
-import { Ionicons } from '@expo/vector-icons'; 
-import {auth} from '../../../init/firebase'
+import {auth} from '../../../init/firebase';
+import * as ImagePicker from 'expo-image-picker';
 class Settings extends Component{
-   
+constructor(){
+    super()
+    this.state={
+        image:null
+    }
+}
     logOut=()=>{
        auth.signOut().then(() => {
         // Sign-out successful.
@@ -12,6 +17,17 @@ class Settings extends Component{
        }).catch((error) => {
         // An error happened.
       });
+    }
+
+    selectImage= async ()=>{
+        let permissionResult = await ImagePicker.requestMediaLibraryPermissionsAsync();
+
+        if (permissionResult.granted === false) {
+        alert("Permission to access camera roll is required!");
+        return;
+        }
+
+        let pickerResult = await ImagePicker.launchImageLibraryAsync();
     }
     render(){
         console.log(this.props.user.displayName,"Timm")
@@ -25,17 +41,18 @@ class Settings extends Component{
                         uri:
                         'https://support.grasshopper.com/assets/images/care/topnav/default-user-avatar.jpg',
                     }}
+                    onPress={this.selectImage}
                     >
                     </Avatar>
                 </View>
                 <View>
                     <Text style={styles.descriptionText}>{this.props.user.displayName}</Text>
-                    <TouchableOpacity onPress={()=>{
+                    {/* <TouchableOpacity onPress={()=>{
                         this.props.navigation.navigate('Edit Account')
-                    }}><Text style={styles.EditAccount}>EDIT ACCOUNT</Text></TouchableOpacity>
+                    }}><Text style={styles.EditAccount}>EDIT ACCOUNT</Text></TouchableOpacity> */}
                 </View>
-                <Divider style={{ backgroundColor: 'gray',width:1000 }} />
-                 <View style={styles.viewMargin}>
+                {/* <Divider style={{ backgroundColor: 'gray',width:1000 }} /> */}
+                 {/* <View style={styles.viewMargin}>
                       <Text style={styles.savedPlaces}>Saved places</Text>
                       <TouchableOpacity style={styles.flexContainer}>
                          <Ionicons name="home-outline" size={24} color="black" style={{marginTop:5}} />
@@ -53,7 +70,7 @@ class Settings extends Component{
                                 <Text style={styles.subHeading}>Add Work</Text>
                           </View>
                       </TouchableOpacity>
-                 </View>
+                 </View> */}
                  <Divider style={{ backgroundColor: 'gray',width:1000 }} />
                  <View style={styles.viewMargin}>
                  <Text style={styles.savedPlaces}>Other Options</Text>

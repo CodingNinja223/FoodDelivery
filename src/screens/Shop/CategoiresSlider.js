@@ -71,7 +71,7 @@ constructor(){
                 data={this.state.data}
                 renderItem={({item})=>(
                     <TouchableOpacity 
-                     onPress={()=>this.props.navigation.navigate(`Account`,{screen:`${item.route}`})}>
+                     onPress={()=>this.props.navigation.navigate(`${item.route}`)}>
                     <ImageBackground source={item.image} style={styles.image} resizeMode="cover">
                         <Text style={styles.foodText}>{item.text}</Text>
                     </ImageBackground>
@@ -93,8 +93,9 @@ const styles=StyleSheet.create({
     margin:20
   },
   heading:{
-      fontSize:20,
-      margin:10
+    fontSize:20,
+    fontWeight:"bold",
+    margin:10
   },
   foodText:{
    color:"#FFFFFF",

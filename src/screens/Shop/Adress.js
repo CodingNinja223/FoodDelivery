@@ -15,9 +15,9 @@ render(){
       <View style={styles.container}>
             <View style={styles.windowPain}>
                  <View style={styles.buttonDeliver}>
-                     <Text style={styles.textHeading}>Delivery Adress</Text>
+                     <Text style={styles.textHeading}>Delivery Address</Text>
                  </View>
-                 <TouchableOpacity>
+                 <TouchableOpacity onPress={()=>this.props.navigation.navigate('Pick Adress')}>
                  <View style={styles.adressBar}>
                    <Ionicons name="location" size={24} color="black" />
                     <Text>{adress}</Text>
@@ -51,7 +51,7 @@ const styles=StyleSheet.create({
     adressBar:{
     flexDirection:'row',
      marginTop:20,
-     backgroundColor:"#cdcacc",
+     backgroundColor:"#d7dedc",
      borderRadius:20,
      padding:10,
      width:300

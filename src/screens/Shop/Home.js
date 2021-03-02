@@ -8,7 +8,7 @@ import Food from './Foods';
 const Home=({navigation})=>{
     return(
         <ScrollView >
-            <Adress/>
+            <Adress navigation={navigation}/>
             <Brands/>
             <CategoriesSlider navigation={navigation}/>
             <Food/>
